@@ -11,7 +11,7 @@
  Target Server Version : 100119
  File Encoding         : 65001
 
- Date: 16/04/2018 05:15:23
+ Date: 17/04/2018 05:43:05
 */
 
 SET NAMES utf8mb4;
@@ -31,12 +31,13 @@ CREATE TABLE `berita`  (
   `url` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `visitor` int(5) NULL DEFAULT NULL,
   `display` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `time` timestamp(0) NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`, `id_kategori`) USING BTREE,
   INDEX `id_kategori`(`id_kategori`) USING BTREE,
   CONSTRAINT `fk_kategori` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for foto
