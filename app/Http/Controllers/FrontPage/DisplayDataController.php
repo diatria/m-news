@@ -16,9 +16,12 @@ class DisplayDataController extends Controller
     {
     	$berita_slider = Berita::orderBy('visitor', 'desc')->where('source_type', '!=', 'embed')->take(5)->get();
         $berita_popular = Berita::orderBy('visitor', 'desc')->take(5)->get();
+        $berita_terbaru = Berita::orderBy('time', 'desc')->where('display', 'Yes')->get();
     	return view('frontpage.frontpage_index')
     	->with('berita_slider', $berita_slider)
-        ->with('berita_popular', $berita_popular);
+        ->with('berita_popular', $berita_popular)
+        ->with('berita_terbaru', $berita_terbaru);
+        // return $berita_terbaru;
     }
 
     public function mamujuViewBerita($kategori, $berita)

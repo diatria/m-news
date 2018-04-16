@@ -289,44 +289,36 @@
 		<hr>
 		<!-- INI berita Berita Terkini
 		==========================================================================================================-->
-		<h4 style="text-align: left;"><a><u>BERITA TERKINI</u></a></h4>
-		<table style="text-align: left; border-spacing: 10px;   display: table; border-collapse: separate;">
+		<h4 style="text-align: left;"><a><u>BERITA TERKINIs</u></a></h4>
+
+		@foreach($berita_terbaru as $news)
+		<table style="text-align: left; display: table; border-collapse: separate;" class="table-bt">
 			<tr>
-				<td colspan="2" rowspan="2" ><img src="beritaterkini.png"></td>
-				<td><a href="#"><h2>Emil Dardak Minta Baliho Bergambar Khofifah-Emil Diturunkan</h2></a></td>
-			</tr>
-			<tr>
-				<td>news  |  15/12/2017</td>
-			</tr>
-			<tr>
-				<td colspan="2" rowspan="2" ><img src="beritaterkini.png"></td>
-				<td><a href="#"><h2>Emil Dardak Minta Baliho Bergambar Khofifah-Emil Diturunkan</h2></a></td>
-			</tr>
-			<tr>
-				<td>news  |  15/12/2017</td>
-			</tr>
-			<tr>
-				<td colspan="2" rowspan="2" ><img src="beritaterkini.png"></td>
-				<td><a href="#"><h2>Emil Dardak Minta Baliho Bergambar Khofifah-Emil Diturunkan</h2></a></td>
-			</tr>
-			<tr>
-				<td>news  |  15/12/2017</td>
-			</tr>
-			<tr>
-				<td colspan="2" rowspan="2" ><img src="beritaterkini.png"></td>
-				<td><a href="#"><h2>Emil Dardak Minta Baliho Bergambar Khofifah-Emil Diturunkan</h2></a></td>
-			</tr>
-			<tr>
-				<td>news  |  15/12/2017</td>
-			</tr>
-			<tr>
-				<td colspan="2" rowspan="2" ></td>
-				<td></td>
+				@if($news->source_type == 'gambar')
+				<td class="bt" style="clear: both; padding: 0; margin: 0;">
+					<img src="{{$news->source}}" alt="Los Angeles" style="width:100%; height: 350px;">
+				</td>
+				@elseif($news->source_type == 'video')
+				<td class="embed-bt">
+					<div class="embed artikel">
+						<object data="{{$news->source}}" style="min-width: 500px;width: 100%;min-height: 270px;">
+						</object>
+					</div>
+				</td>
+				@elseif($news->source_type == 'embed')
+				<td class="embed-bt">
+					<div class="embed artikel">
+						{!! $news->source !!}
+					</div>
+				</td>
+				@endif
+				<td class="bt"><a href="#"><h2>{{$news->judul}}</h2></a></td>
 			</tr>
 		</table>
+		@endforeach
 		<!--// 1.2.2 Bagian video 1
 		==================================================================================================== -->
-		<table style="text-align: left; border-spacing: 10px;   display: table; border-collapse: separate;">
+		{{-- <table style="text-align: left; border-spacing: 10px;   display: table; border-collapse: separate;" class="table-bt">
 			<tr>
 				<td colspan="2" rowspan="2" width="70%" height="auto"><iframe width="100%" height="300px" src="https://www.youtube.com/embed/KqwTm80y-Ok" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></td>
 				<td><a href="#"><h2>Emil Dardak Minta Baliho Bergambar Khofifah-Emil Diturunkan</h2></a></td>
@@ -334,25 +326,7 @@
 			<tr>
 				<td width="30%">news  |  15/12/2017</td>
 			</tr>
-		</table>
-		<!--// 1.2.2 Bagian Berita Terkini
-		==================================================================================================== -->
-		<table style="text-align: left; border-spacing: 10px;   display: table; border-collapse: separate;">
-			<tr>
-				<td colspan="2" rowspan="2" ><img src="beritaterkini.png"></td>
-				<td><a href="#"><h2>Emil Dardak Minta Baliho Bergambar Khofifah-Emil Diturunkan</h2></a></td>
-			</tr>
-			<tr>
-				<td>news  |  15/12/2017</td>
-			</tr>
-			<tr>
-				<td colspan="2" rowspan="2" ><img src="beritaterkini.png"></td>
-				<td><a href="#"><h2>Emil Dardak Minta Baliho Bergambar Khofifah-Emil Diturunkan</h2></a></td>
-			</tr>
-			<tr>
-				<td>news  |  15/12/2017</td>
-			</tr>
-		</table>
+		</table> --}}
 	</div>
 	<!--// 1.2.2 Bagian Sidebar
 	==================================================================================================== -->

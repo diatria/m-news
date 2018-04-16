@@ -94,6 +94,26 @@
       width: 100%;
       height: auto;
     }
+    .embed.artikel > *{
+      max-width: 500px !important;
+      width: 500px;
+      height: 280px;
+    }
+    .table-bt{
+      background-color: #FFF;
+    }
+    .embed-bt{
+      padding: 5px !important;
+      border-bottom: 1.5px solid #E0E0E0;  
+    }
+    .bt{
+      padding: 5px !important;
+      border-bottom: 1.5px solid #E0E0E0;
+    }
+    .bt > * {
+      width: 200px !important;
+      height: 120px !important;
+    }
     </style>
   </head>
   <body>

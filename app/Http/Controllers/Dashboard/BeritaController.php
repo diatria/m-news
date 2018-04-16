@@ -45,7 +45,7 @@ class BeritaController extends Controller
             $file_link = $request->input('source_link');
             $file_embed = $request->input('source_embed');
             if ($file != null) {
-                $file_name = Storage::disk('public')->put('berita/source', $file);
+                $file_store = Storage::disk('public')->put('berita/source', $file);
                 $file_name = asset('storage').'/'.$file_store;
             } elseif($file_link != null) {
                 $file_name = $file_link;
