@@ -38,4 +38,9 @@ class Kategori extends Model
     	$table->save();
     	return $table;
     }
+
+    public static function detail($id){
+        $table = Kategori::find($id);
+        return $table;
+    }
 }

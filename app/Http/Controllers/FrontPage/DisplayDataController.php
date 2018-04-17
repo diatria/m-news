@@ -15,7 +15,7 @@ class DisplayDataController extends Controller
     public function mamujuHome()
     {
     	$berita_slider = Berita::orderBy('visitor', 'desc')->where('source_type', '!=', 'embed')->take(5)->get();
-        $berita_popular = Berita::orderBy('visitor', 'desc')->take(5)->get();
+        $berita_popular = Berita::orderBy('visitor', 'desc')->where('source_type', 'gambar')->take(5)->get();
         $berita_terbaru = Berita::orderBy('time', 'desc')->where('display', 'Yes')->get();
     	return view('frontpage.frontpage_index')
     	->with('berita_slider', $berita_slider)
@@ -30,8 +30,10 @@ class DisplayDataController extends Controller
     		$id_kategori = Kategori::where('nama_kategori', $kategori)->first();
     		// Statistik
 	    	$berita = Berita::where('url', $berita)->where('id_kategori', $id_kategori->id)->first();
-	    	return view('frontpage.frontpage_view')
+            $berita_popular = Berita::orderBy('visitor', 'desc')->where('source_type', 'gambar')->take(5)->get();
+	    	return view('frontpage.frontpage_viewer')
 	    	->with('kategori', $id_kategori->id)
+            ->with('berita_popular', $berita_popular)
 	    	->with('berita', $berita);
 	    	echo 'aresti';
     	} catch (\Exception $e) {

@@ -1,0 +1,10 @@
+.nav-header{
+	background-color: $white !important;
+}
+.sub-nav-header{
+	background-color: $black;
+	&  * {
+		color: $white !important;
+	}
+	z-index: 10 !important;
+}
