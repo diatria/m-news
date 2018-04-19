@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 @php
-$directory = 'Berita';
+$directory = 'Iklan';
 @endphp
 <div class="row page-titles">
 	<div class="col-md-5 align-self-center">
@@ -25,7 +25,7 @@ $directory = 'Berita';
 				@if (session('message'))
 					<div class="alert alert-{{session('status')}} alert-dismissible fade show text-dark" role="alert">
 						<strong >Pesan : </strong> {{ session('message') }}
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -34,20 +34,23 @@ $directory = 'Berita';
 			</div>
 		</div>
 		<div class="row">
-			@yield('berita-content')
+			@yield('iklan-content')
 		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-title">
-						Data List Berita
+						Data Nama Kategori
 					</div>
 					<div class="card-body">
 						<table class="table">
 							<thead class="thead-default">
 								<tr>
 									<td>No</td>
-									<td>Judul</td>
+									<td>Nama</td>
+									<td>Keterangan</td>
+									<td>Expired</td>
+									<td>Penempatan</td>
 									<td>Action</td>
 								</tr>
 							</thead>
@@ -56,6 +59,7 @@ $directory = 'Berita';
 				</div>
 			</div>
 		</div>
+
 	</div>
 </div>
 @endsection
@@ -71,25 +75,23 @@ $directory = 'Berita';
     <script src="{{URL::asset('js/lib/datatables/datatables-init.js')}}"></script>
     <script src="{{URL::asset('js/lib/sweetalert/sweetalert.min.js')}}"></script>
     <script src="{{URL::asset('js/lib/sweetalert/sweetalert.init.js')}}"></script>
-    <script src="{{URL::asset('js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/tinymce/js/tinymce/tinymce.min.js')}}"></script>
 	<script>
 		$(document).ready(function(){
-			// TinyMce
-			tinymce.init({ selector:'.text-editor' });
-			
 			var url = window.location.href;
 			var arr = url.split("/");
 			var url_result = arr[0] + "//" + arr[2];
 			$("input[name='url']").val(url_result);
 
 			// Data Table
-			var data = {!!$data!!}
+			var data = {!!$data!!};
 			var dTable = $('.table').DataTable({
 				data: data,
 				columns:[
 					{data: null},
-					{data: 'judul'},
+					{data: 'nama_iklan'},
+					{data: 'keterangan'},
+					{data: 'expired'},
+					{data: 'position'},
 					{
 				      data: 'id',
 				      render: function(data, type, row){
@@ -134,10 +136,10 @@ $directory = 'Berita';
 	        },
 	        function(isConfirm){
 	            if (isConfirm) {
-	                window.location = "{{url('db_berita/destroy/')}}/"+id;
+	                window.location = "{{url('db_iklan/destroy/')}}/"+id;
 	            }
 	            else {
-	                window.location = "{{url('db_berita/change_viewer/')}}/"+id;
+	                window.location = "{{url('db_iklan/change_viewer/')}}/"+id;
 	            }
 	        });
 		}

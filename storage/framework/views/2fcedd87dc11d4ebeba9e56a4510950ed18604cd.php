@@ -1,5 +1,4 @@
-@extends('frontpage.frontpage_layout')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="col-sm-9">
 	<!-- INI SLIDE IMAGE
 	==========================================================================================================-->
@@ -7,57 +6,58 @@
 		<!-- Indicators -->
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" style="height: 350px">
-			@php
+			<?php
 			$no_b = 0;
-			@endphp
-			@foreach($berita_slider as $slider)
+			?>
+			<?php $__currentLoopData = $berita_slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 			
-			@if($no_b == 0)
-			<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" class="item active">
-				@else
-				<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" class="item">
-					@endif
-					@if($slider->source_type == 'gambar')
-					<img src="{{$slider->source}}" alt="Los Angeles" style="width:100%; height: 350px;">
-					@elseif($slider->source_type == 'video')
-					<object data="{{$slider->source}}" style="min-width: 600px;width: 100%;min-height: 350px;">
+			<?php if($no_b == 0): ?>
+			<a href="<?php echo e(url('view')); ?>/<?php echo e(App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori); ?>/<?php echo e($slider->url); ?>" class="item active">
+				<?php else: ?>
+				<a href="<?php echo e(url('view')); ?>/<?php echo e(App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori); ?>/<?php echo e($slider->url); ?>" class="item">
+					<?php endif; ?>
+					<?php if($slider->source_type == 'gambar'): ?>
+					<img src="<?php echo e($slider->source); ?>" alt="Los Angeles" style="width:100%; height: 350px;">
+					<?php elseif($slider->source_type == 'video'): ?>
+					<object data="<?php echo e($slider->source); ?>" style="min-width: 600px;width: 100%;min-height: 350px;">
 					</object>
-					@elseif($slider->source_type == 'embed')
+					<?php elseif($slider->source_type == 'embed'): ?>
 					<div class="embed">
-						{!! $slider->source !!}
+						<?php echo $slider->source; ?>
+
 					</div>
-					@endif
+					<?php endif; ?>
 					<div class="carousel-caption mm-set-carousel">
-						<h2>{{$slider->judul}}</h2>
+						<h2><?php echo e($slider->judul); ?></h2>
 					</div>
 				</a>
-				@php
+				<?php
 				$no_b = $no_b + 1
-				@endphp
-				@endforeach
+				?>
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 			</div>
 		</div>
 		<br>
 		<!-- INI LIST 4 IMAGE
 		==========================================================================================================-->
 		<div class="row">
-			@foreach($berita_slider as $slider)
+			<?php $__currentLoopData = $berita_slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 			<div class="col-md-3">
 				<div class="thumbnail sm">
-					<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" target="_blank">
-						<img src="{{$slider->source}}" alt="Lights" style="width:100%">
+					<a href="<?php echo e(url('view')); ?>/<?php echo e(App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori); ?>/<?php echo e($slider->url); ?>" target="_blank">
+						<img src="<?php echo e($slider->source); ?>" alt="Lights" style="width:100%">
 						<div class="caption">
-							<p>{{str_limit($slider->judul, 50)}}</p>
+							<p><?php echo e(str_limit($slider->judul, 50)); ?></p>
 						</div>
 					</a>
 				</div>
 			</div>
-			@endforeach
+			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 		</div>
 		<!-- INI Iklan 6
 		==========================================================================================================-->
 		<div class="row iklan6">
-			<img src="{{$iklan['iklan6']['gambar_iklan']}}" width="95%" height="60px"/>
+			<img src="<?php echo e($iklan['iklan6']['gambar_iklan']); ?>" width="95%" height="60px"/>
 		</div>
 		<hr />
 		<!-- INI berita Infografis
@@ -127,37 +127,38 @@
 		<!-- INI iklan7
 		==========================================================================================================-->
 		<div class="row iklan7">
-			<img src="{{$iklan['iklan7']['gambar_iklan']}}" width="95%" height="60px">
+			<img src="<?php echo e($iklan['iklan7']['gambar_iklan']); ?>" width="95%" height="60px">
 		</div>
 		<hr>
 		<!-- INI berita Berita Terkini
 		==========================================================================================================-->
 		<h4 style="text-align: left;" class="berita-terkini-header"><span class="berita-terkini">BERITA TERKINI</span></h4>
-		@foreach($berita_terbaru_first as $news)
+		<?php $__currentLoopData = $berita_terbaru_first; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		<table style="text-align: left; display: table; border-collapse: separate;" class="table-bt">
 			<tr>
-				@if($news->source_type == 'gambar')
+				<?php if($news->source_type == 'gambar'): ?>
 				<td class="bt" style="clear: both; padding: 0; margin: 0;">
-					<img src="{{$news->source}}" alt="Los Angeles" style="width:100%; height: 350px;">
+					<img src="<?php echo e($news->source); ?>" alt="Los Angeles" style="width:100%; height: 350px;">
 				</td>
-				@elseif($news->source_type == 'video')
+				<?php elseif($news->source_type == 'video'): ?>
 				<td class="embed-bt">
 					<div class="embed artikel">
-						<object data="{{$news->source}}" style="min-width: 500px;width: 100%;min-height: 270px;">
+						<object data="<?php echo e($news->source); ?>" style="min-width: 500px;width: 100%;min-height: 270px;">
 						</object>
 					</div>
 				</td>
-				@elseif($news->source_type == 'embed')
+				<?php elseif($news->source_type == 'embed'): ?>
 				<td class="embed-bt">
 					<div class="embed artikel">
-						{!! $news->source !!}
+						<?php echo $news->source; ?>
+
 					</div>
 				</td>
-				@endif
-				<td class="bt {{$news->source_type}}"><a href="#"><h2>{{$news->judul}}</h2></a></td>
+				<?php endif; ?>
+				<td class="bt <?php echo e($news->source_type); ?>"><a href="#"><h2><?php echo e($news->judul); ?></h2></a></td>
 			</tr>
 		</table>
-		@endforeach
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 		<hr>
 		<!-- INI SLIDE IMAGE
 		==========================================================================================================-->
@@ -202,58 +203,61 @@
 		==========================================================================================================-->
 		<h4 style="text-align: left;" class="berita-terkini-header"><span class="berita-terkini">BERITA TERKINI</span></h4>
 
-		@foreach($berita_terbaru_second as $news)
+		<?php $__currentLoopData = $berita_terbaru_second; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		<table style="text-align: left; display: table; border-collapse: separate;" class="table-bt">
 			<tr>
-				@if($news->source_type == 'gambar')
+				<?php if($news->source_type == 'gambar'): ?>
 				<td class="bt" style="clear: both; padding: 0; margin: 0;">
-					<img src="{{$news->source}}" alt="Los Angeles" style="width:100%; height: 350px;">
+					<img src="<?php echo e($news->source); ?>" alt="Los Angeles" style="width:100%; height: 350px;">
 				</td>
-				@elseif($news->source_type == 'video')
+				<?php elseif($news->source_type == 'video'): ?>
 				<td class="embed-bt">
 					<div class="embed artikel">
-						<object data="{{$news->source}}" style="min-width: 500px;width: 100%;min-height: 270px;">
+						<object data="<?php echo e($news->source); ?>" style="min-width: 500px;width: 100%;min-height: 270px;">
 						</object>
 					</div>
 				</td>
-				@elseif($news->source_type == 'embed')
+				<?php elseif($news->source_type == 'embed'): ?>
 				<td class="embed-bt">
 					<div class="embed artikel">
-						{!! $news->source !!}
+						<?php echo $news->source; ?>
+
 					</div>
 				</td>
-				@endif
-				<td class="bt {{$news->source_type}}"><a href="#"><h2>{{$news->judul}}</h2></a></td>
+				<?php endif; ?>
+				<td class="bt <?php echo e($news->source_type); ?>"><a href="#"><h2><?php echo e($news->judul); ?></h2></a></td>
 			</tr>
 		</table>
-		@endforeach
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	</div>
 	<!--// 1.2.2 Bagian Sidebar
 	==================================================================================================== -->
 	<div class="col-sm-3">
-		<img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
-		<img src="{{$iklan['iklan5']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
+		<img src="<?php echo e($iklan['iklan4']['gambar_iklan']); ?>" alt="Chicago" style="width:100%;">
+		<img src="<?php echo e($iklan['iklan5']['gambar_iklan']); ?>" alt="Chicago" style="width:100%;">
 	</div>
 	<div class="col-md-3">
-		@foreach($berita_popular as $popular)
+		<?php $__currentLoopData = $berita_popular; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $popular): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		<div class="thumbnail md">
-			<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}/{{$popular->url}}" target="_blank">
-				@if($popular->source_type == 'gambar')
-					<img src="{{$popular->source}}" alt="Los Angeles" style="width:100%; max-height: ">
-				@elseif($popular->source_type == 'video')
-					<object data="{{$popular->source}}" style="width: 100%;">
+			<a href="<?php echo e(url('view')); ?>/<?php echo e(App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori); ?>/<?php echo e($popular->url); ?>" target="_blank">
+				<?php if($popular->source_type == 'gambar'): ?>
+					<img src="<?php echo e($popular->source); ?>" alt="Los Angeles" style="width:100%; max-height: ">
+				<?php elseif($popular->source_type == 'video'): ?>
+					<object data="<?php echo e($popular->source); ?>" style="width: 100%;">
 					</object>
-				@elseif($popular->source_type == 'embed')
+				<?php elseif($popular->source_type == 'embed'): ?>
 					<div class="embed unset">
-						{!! $popular->source !!}
+						<?php echo $popular->source; ?>
+
 					</div>
-				@endif
+				<?php endif; ?>
 				<div class="caption">
-					<p>{{str_limit($popular->judul, 70)}}</p>
+					<p><?php echo e(str_limit($popular->judul, 70)); ?></p>
 				</div>
 			</a>
 		</div>
-		@endforeach
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	</div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontpage.frontpage_layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

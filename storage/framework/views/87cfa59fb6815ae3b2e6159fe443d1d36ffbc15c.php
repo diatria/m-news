@@ -1,19 +1,18 @@
-@extends('dashboard.layout')
-@section('header')
-<link href="{{URL::asset('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
-<link href="{{URL::asset('css/lib/font-awesome/fontawesome-all.css')}}" rel="stylesheet">
-@endsection
-@section('content')
-@php
+<?php $__env->startSection('header'); ?>
+<link href="<?php echo e(URL::asset('css/lib/sweetalert/sweetalert.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('css/lib/font-awesome/fontawesome-all.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php
 $directory = 'Berita';
-@endphp
+?>
 <div class="row page-titles">
 	<div class="col-md-5 align-self-center">
-		<h3 class="text-primary">{{$directory}}</h3> </div>
+		<h3 class="text-primary"><?php echo e($directory); ?></h3> </div>
 		<div class="col-md-7 align-self-center">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-				<li class="breadcrumb-item active">{{$directory}}</li>
+				<li class="breadcrumb-item active"><?php echo e($directory); ?></li>
 			</ol>
 		</div>
 	</div>
@@ -22,19 +21,20 @@ $directory = 'Berita';
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				@if (session('message'))
-					<div class="alert alert-{{session('status')}} alert-dismissible fade show text-dark" role="alert">
-						<strong >Pesan : </strong> {{ session('message') }}
+				<?php if(session('message')): ?>
+					<div class="alert alert-<?php echo e(session('status')); ?> alert-dismissible fade show text-dark" role="alert">
+						<strong >Pesan : </strong> <?php echo e(session('message')); ?>
+
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-				@endif
+				<?php endif; ?>
 				
 			</div>
 		</div>
 		<div class="row">
-			@yield('berita-content')
+			<?php echo $__env->yieldContent('berita-content'); ?>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
@@ -58,21 +58,21 @@ $directory = 'Berita';
 		</div>
 	</div>
 </div>
-@endsection
-@section('footer')
-	<script src="{{URL::asset('js/lib/datatables/datatables.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js')}}"></script>
-    <script src="{{URL::asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/datatables/datatables-init.js')}}"></script>
-    <script src="{{URL::asset('js/lib/sweetalert/sweetalert.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/sweetalert/sweetalert.init.js')}}"></script>
-    <script src="{{URL::asset('js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('footer'); ?>
+	<script src="<?php echo e(URL::asset('js/lib/datatables/datatables.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/datatables/datatables-init.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/sweetalert/sweetalert.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/sweetalert/sweetalert.init.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/bootstrap/js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
 	<script>
 		$(document).ready(function(){
 			// TinyMce
@@ -84,7 +84,8 @@ $directory = 'Berita';
 			$("input[name='url']").val(url_result);
 
 			// Data Table
-			var data = {!!$data!!}
+			var data = <?php echo $data; ?>
+
 			var dTable = $('.table').DataTable({
 				data: data,
 				columns:[
@@ -134,12 +135,13 @@ $directory = 'Berita';
 	        },
 	        function(isConfirm){
 	            if (isConfirm) {
-	                window.location = "{{url('db_berita/destroy/')}}/"+id;
+	                window.location = "<?php echo e(url('db_berita/destroy/')); ?>/"+id;
 	            }
 	            else {
-	                window.location = "{{url('db_berita/change_viewer/')}}/"+id;
+	                window.location = "<?php echo e(url('db_berita/change_viewer/')); ?>/"+id;
 	            }
 	        });
 		}
 	</script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('dashboard.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -9,18 +9,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo e(URL::asset('images/favicon.png')); ?>">
     <title>Ela - Bootstrap Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
-    <link href="{{URL::asset('css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="<?php echo e(URL::asset('css/lib/bootstrap/bootstrap.min.css')); ?>" rel="stylesheet">
     <!-- Custom CSS -->
-    @yield('header')
-    <link href="{{URL::asset("css/lib/calendar2/semantic.ui.min.css")}}" rel="stylesheet">
-    <link href="{{URL::asset("css/lib/calendar2/pignose.calendar.min.css")}}" rel="stylesheet">
-    <link href="{{URL::asset("css/lib/owl.carousel.min.css")}}" rel="stylesheet" />
-    <link href="{{URL::asset("css/lib/owl.theme.default.min.css")}}" rel="stylesheet" />
-    <link href="{{URL::asset("css/helper.css")}}" rel="stylesheet">
-    <link href="{{URL::asset("css/style.css")}}" rel="stylesheet">
+    <?php echo $__env->yieldContent('header'); ?>
+    <link href="<?php echo e(URL::asset("css/lib/calendar2/semantic.ui.min.css")); ?>" rel="stylesheet">
+    <link href="<?php echo e(URL::asset("css/lib/calendar2/pignose.calendar.min.css")); ?>" rel="stylesheet">
+    <link href="<?php echo e(URL::asset("css/lib/owl.carousel.min.css")); ?>" rel="stylesheet" />
+    <link href="<?php echo e(URL::asset("css/lib/owl.theme.default.min.css")); ?>" rel="stylesheet" />
+    <link href="<?php echo e(URL::asset("css/helper.css")); ?>" rel="stylesheet">
+    <link href="<?php echo e(URL::asset("css/style.css")); ?>" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -44,10 +44,10 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                        <b><img src="{{URL::asset('images/logo.png')}}" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="<?php echo e(URL::asset('images/logo.png')); ?>" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="{{URL::asset('images/logo-text.png')}}" alt="homepage" class="dark-logo" /></span>
+                        <span><img src="<?php echo e(URL::asset('images/logo-text.png')); ?>" alt="homepage" class="dark-logo" /></span>
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -186,21 +186,21 @@
                                         <div class="message-center">
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="{{URL::asset('images/users/5.jpg')}}" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="user-img"> <img src="<?php echo e(URL::asset('images/users/5.jpg')); ?>" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="{{URL::asset('images/users/2.jpg')}}" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="user-img"> <img src="<?php echo e(URL::asset('images/users/2.jpg')); ?>" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>John Doe</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="{{URL::asset('images/users/3.jpg')}}" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                <div class="user-img"> <img src="<?php echo e(URL::asset('images/users/3.jpg')); ?>" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Mr. John</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
                                                 </div>
@@ -249,11 +249,11 @@
                         <li class="nav-devider"></li>
                         <li class="nav-label">Home</li>
                         <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Dashboard</a></li>
-                        <li><a class="" href="{{url('db_berita')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Berita</a></li>
+                        <li><a class="" href="<?php echo e(url('db_berita')); ?>" aria-expanded="false"><i class="fa fa-tachometer"></i>Berita</a></li>
                         <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Mamuju TV</a></li>
                         <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Foto</a></li>
-                        <li><a class="" href="{{url('db_kategori')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Kategori</a></li>
-                        <li><a class="" href="{{url('db_iklan')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengatruran Iklan</a></li>
+                        <li><a class="" href="<?php echo e(url('db_kategori')); ?>" aria-expanded="false"><i class="fa fa-tachometer"></i>Kategori</a></li>
+                        <li><a class="" href="<?php echo e(url('db_iklan')); ?>" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengatruran Iklan</a></li>
                         <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Statistik</a></li>
                         <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengguna</a></li>
                         <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Logout</a></li>
@@ -266,48 +266,32 @@
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
         <div class="page-wrapper">
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
         </div>
         <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
-    <script src="{{URL::asset('js/lib/jquery/jquery.min.js')}}"></script>
+    <script src="<?php echo e(URL::asset('js/lib/jquery/jquery.min.js')); ?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{URL::asset('js/lib/bootstrap/js/popper.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="<?php echo e(URL::asset('js/lib/bootstrap/js/popper.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('js/lib/bootstrap/js/bootstrap.min.js')); ?>"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{URL::asset('js/jquery.slimscroll.js')}}"></script>
+    <script src="<?php echo e(URL::asset('js/jquery.slimscroll.js')); ?>"></script>
     <!--Menu sidebar -->
-    <script src="{{URL::asset('js/sidebarmenu.js')}}"></script>
+    <script src="<?php echo e(URL::asset('js/sidebarmenu.js')); ?>"></script>
     <!--stickey kit -->
-    <script src="{{URL::asset('js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
+    <script src="<?php echo e(URL::asset('js/lib/sticky-kit-master/dist/sticky-kit.min.js')); ?>"></script>
     <!--Custom JavaScript -->
 
 
     <!-- Amchart -->
-    {{-- <script src="{{URL::asset('js/lib/morris-chart/raphael-min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/morris-chart/morris.js')}}"></script>
-    <script src="{{URL::asset('js/lib/morris-chart/dashboard1-init.js')}}"></script>
-
-
-    <script src="{{URL::asset('js/lib/calendar-2/moment.latest.min.js')}}"></script>
-    <!-- scripit init-->
-    <script src="{{URL::asset('js/lib/calendar-2/semantic.ui.min.js')}}"></script>
-    <!-- scripit init-->
-    <script src="{{URL::asset('js/lib/calendar-2/prism.min.js')}}"></script>
-    <!-- scripit init-->
-    <script src="{{URL::asset('js/lib/calendar-2/pignose.calendar.min.js')}}"></script>
-    <!-- scripit init-->
-    <script src="{{URL::asset('js/lib/calendar-2/pignose.init.js')}}"></script>
-
-    <script src="{{URL::asset('js/lib/owl-carousel/owl.carousel.min.js')}}"></script>
-    <script src="{{URL::asset('js/lib/owl-carousel/owl.carousel-init.js')}}"></script> --}}
-    <script src="{{URL::asset('js/scripts.js')}}"></script>
+    
+    <script src="<?php echo e(URL::asset('js/scripts.js')); ?>"></script>
     <!-- scripit init-->
 
-    @yield('footer')
-    <script src="{{URL::asset('js/custom.min.js')}}"></script>
+    <?php echo $__env->yieldContent('footer'); ?>
+    <script src="<?php echo e(URL::asset('js/custom.min.js')); ?>"></script>
 </body>
 
 </html>

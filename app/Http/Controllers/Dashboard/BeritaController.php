@@ -54,7 +54,7 @@ class BeritaController extends Controller
             }
 
     		Berita::insert($request, $file_name);
-    		return ResponseRedirect::go('berita', 'Berhasil menyimpan data berita', 'success');
+    		return ResponseRedirect::go('db_berita', 'Berhasil menyimpan data berita', 'success');
     	} catch (\Exception $e) {
     		return $e;
     	}
@@ -68,7 +68,7 @@ class BeritaController extends Controller
             $file_link = $request->input('source_link');
             $file_embed = $request->input('source_embed');
             if ($file != null) {
-                $file_name = Storage::disk('public')->put('berita/source', $file);
+                $file_store = Storage::disk('public')->put('berita/source', $file);
                 $file_name = asset('storage').'/'.$file_store;
             } elseif($file_link != null) {
                 $file_name = $file_link;
@@ -79,7 +79,7 @@ class BeritaController extends Controller
             }
 
     		Berita::change($request, $id, $file_name);
-    		return ResponseRedirect::go('berita', 'Berhasil merubah data berita', 'success');
+    		return ResponseRedirect::go('db_berita', 'Berhasil merubah data berita', 'success');
     	} catch (\Exception $e) {
     		return $e;
     	}
@@ -89,7 +89,7 @@ class BeritaController extends Controller
     {
     	try {
     		Berita::destroy($id);
-    		return ResponseRedirect::go('berita', 'Berhasil menghapus data berita', 'danger');
+    		return ResponseRedirect::go('db_berita', 'Berhasil menghapus data berita', 'danger');
     	} catch (\Exception $e) {
     		return $e;
     	}

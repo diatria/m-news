@@ -49,7 +49,7 @@ class KategoriController extends Controller
     {
     	try {
     		kategori::insert($request);
-    		return ResponseRedirect::go('kategori', 'Berhasil menyimpan data kategori', 'success');
+    		return ResponseRedirect::go('db_kategori', 'Berhasil menyimpan data kategori', 'success');
     	} catch (\Exception $e) {
     		return $e;
     	}
@@ -60,7 +60,7 @@ class KategoriController extends Controller
     {
     	try {
     		kategori::change($request, $id);
-    		return ResponseRedirect::go('kategori', 'Berhasil merubah data kategori', 'success');
+    		return ResponseRedirect::go('db_kategori', 'Berhasil merubah data kategori', 'success');
     	} catch (\Exception $e) {
     		return $e;
     	}
@@ -70,7 +70,7 @@ class KategoriController extends Controller
     {
     	try {
     		kategori::destroy($id);
-    		return ResponseRedirect::go('kategori', 'Berhasil menghapus data kategori', 'danger');
+    		return ResponseRedirect::go('db_kategori', 'Berhasil menghapus data kategori', 'danger');
     	} catch (\Exception $e) {
     		return $e;
     	}

@@ -8,118 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    /* Note: Try to remove the following lines to see the effect of CSS positioning */
-    .affix {
-    top: 0;
-    width: 100%;
-    z-index: 9999 !important;
-    }
-    .affix + .container-fluid {
-    padding-top: 70px;
-    }
-    .center ul{
-    width: -moz-fit-content;
-    width: -webkit-fit-content;
-    width: fit-content;
-    margin: auto;
-    }
-    input[type=text] {
-    width: 70%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 11px;
-    background-color: white;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    }
-    input[type=text]:focus {
-    width: 90%;
-    }
-    button{
-    width: 10%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    }
-    .topnav {
-    overflow: visible;
-    background-color: #333;
-    text-align: center;
-    padding: 15px;
-    font-size: 12px;
-    height: 10px;
-    }
-    .topnav a {
-    color: #f2f2f2;
-    padding: 6px 8px;
-    text-decoration: none;
-    font-size: 12px;
-    }
-    .topnav a:hover {
-    color: red;
-    }
-    .topnav a.active {
-    color: green;
-    }
-    .header{
-    padding: 10px;
-    background-color: rgb(29, 112, 100);
-    }
-    .konten{
-    text-align: center;
-    margin-top: -20px;
-    padding: 10px;
-    }
-    .embed > iframe {
-      width: 100%;
-      height: auto;
-      height: -moz-available;          /* WebKit-based browsers will ignore this. */
-      height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-      height: fill-available;
-    }
-    .embed.unset > iframe {
-      width: 100%;
-      height: auto;
-    }
-    .embed.artikel > *{
-      max-width: 500px !important;
-      width: 500px;
-      height: 280px;
-    }
-    .table-bt{
-      background-color: #FFF;
-    }
-    .embed-bt{
-      padding: 5px !important;
-      border-bottom: 1.5px solid #E0E0E0;  
-    }
-    .bt{
-      padding: 5px !important;
-      border-bottom: 1.5px solid #E0E0E0;
-    }
-    .bt > * {
-      width: 200px !important;
-      height: 120px !important;
-    }
-    </style>
+    <link rel="stylesheet" href="{{asset('css/lib/mnews/mnews-old.css')}}">
   </head>
   <body>
     <!-- A. Bagian Header
     ======================================================================================================================================== -->
-    <div class="container-fluid header">
+    <div class="container-fluid header" style="background-color: #004D40;">
       <div class="col-sm-4">
         <center><img class="visible-lg visible-md visible-sm" src="{{asset('images/mnews/logo.png')}}" ></center>
       </div>
@@ -222,17 +116,17 @@
           </div>
           <!-- 1. Bagian Seluruh Konten
           ========================================================================================================================================= -->
-          <div class="container-fluid konten" style="background-color: #CCCCCC;">
+          <div class="container-fluid konten" style="background-color: #F5F5F5;">
             <!--// 1.1 Bagian iklan 1
             ======================================================================================================================================= -->
             <div class="col-sm-1 iklan13">
-              <img src="iklan13.png" width="100%" height="auto">
+              <img src="{{$iklan['iklan1']['gambar_iklan']}}" width="100%" height="auto">
             </div>
             <!--// 1.2 Bagian Seluruh Konte Tengah
             ============================================ height="auto" -->
             <div class="col-sm-10">
               <div class="row iklan2">
-                <img src="iklan2.png" width="100%" height="auto">
+                <img src="{{$iklan['iklan2']['gambar_iklan']}}" width="100%" height="auto">
               </div>
               <br>
               <!--// 1.2.1 Bagian Konten Isi
@@ -241,7 +135,7 @@
               <!--// 1.3. Konten Iklan 2
               ======================================================================================================= -->
               <div class="col-sm-1">
-                <img src="iklan13.png" width="100%" height="auto">
+                <img src="{{$iklan['iklan3']['gambar_iklan']}}" width="100%" height="auto">
               </div>
             </div>
             <!-- // Bagian Footer

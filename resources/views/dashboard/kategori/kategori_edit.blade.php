@@ -8,7 +8,7 @@
 		</div>
 		<div class="card-body">
 			<div class="basic-form">
-				<form action="{{url('kategori/change').'/'.$change->id}}" method="post">
+				<form action="{{url('db_kategori/change').'/'.$change->id}}" method="post">
 					{{ csrf_field() }}
 					<div class="row">
 						<div class="col-md-6">

@@ -19,19 +19,25 @@ Route::get('dashboard', 'Dashboard\DashboardController@viewer');
 
 
 // Kategori
-Route::get('kategori', 'Dashboard\KategoriController@viewer');
-Route::post('kategori/add', 'Dashboard\KategoriController@add');
-Route::get('kategori/destroy/{id}', 'Dashboard\KategoriController@destroy');
-Route::get('kategori/change_viewer/{id}', 'Dashboard\KategoriController@change_viewer');
-Route::post('kategori/change/{id}', 'Dashboard\KategoriController@change');
+Route::get('db_kategori', 'Dashboard\KategoriController@viewer');
+Route::post('db_kategori/add', 'Dashboard\KategoriController@add');
+Route::get('db_kategori/destroy/{id}', 'Dashboard\KategoriController@destroy');
+Route::get('db_kategori/change_viewer/{id}', 'Dashboard\KategoriController@change_viewer');
+Route::post('db_kategori/change/{id}', 'Dashboard\KategoriController@change');
 
 // Berita
-Route::get('berita', 'Dashboard\BeritaController@viewer');
-Route::post('berita/add', 'Dashboard\BeritaController@add');
-Route::get('berita/destroy/{id}', 'Dashboard\BeritaController@destroy');
-Route::get('berita/change_viewer/{id}', 'Dashboard\BeritaController@change_viewer');
-Route::post('berita/change/{id}', 'Dashboard\BeritaController@change');
+Route::get('db_berita', 'Dashboard\BeritaController@viewer');
+Route::post('db_berita/add', 'Dashboard\BeritaController@add');
+Route::get('db_berita/destroy/{id}', 'Dashboard\BeritaController@destroy');
+Route::get('db_berita/change_viewer/{id}', 'Dashboard\BeritaController@change_viewer');
+Route::post('db_berita/change/{id}', 'Dashboard\BeritaController@change');
 
+// Iklan
+Route::get('db_iklan', 'Dashboard\IklanController@viewer');
+Route::post('db_iklan/add', 'Dashboard\IklanController@add');
+Route::get('db_iklan/destroy/{id}', 'Dashboard\IklanController@destroy');
+Route::get('db_iklan/change_viewer/{id}', 'Dashboard\IklanController@change_viewer');
+Route::post('db_iklan/change/{id}', 'Dashboard\IklanController@change');
 
 Route::get('conn', function(){
 	try {

@@ -1,32 +1,32 @@
-@extends('dashboard.berita.berita_layout')
-@section('berita-content')
+<?php $__env->startSection('berita-content'); ?>
 <div class="col-md-12">
 	<div class="card">
 		<div class="card-title">
-			<h4>Edit Berita</h4>
+			<h4>Input Berita</h4>
 			<hr>
 		</div>
 		<div class="card-body">
 			<div class="basic-form">
-				<form action="{{url('db_berita/change')}}/{{$change->id}}" method="post" enctype="multipart/form-data">
-					{{ csrf_field() }}
+				<form action="<?php echo e(url('db_berita/add')); ?>" method="post" enctype="multipart/form-data">
+					<?php echo e(csrf_field()); ?>
+
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Judul</label>
-								<input type="text" name="judul" value="{{$change->judul}}" class="form-control input-flat" placeholder="Judul" required="">
+								<input type="text" name="judul" class="form-control input-flat" placeholder="Judul" required="">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Konten Berita</label>
-								<textarea class="text-editor" name="konten">{{$change->konten}}</textarea>
+								<textarea class="text-editor" name="konten"></textarea>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Kategori</label>
-								<select name="kategori" class="form-control input-flat">
-									<option value="{{$change->id_kategori}}" selected="">Pilih kategori</option>
-									@foreach($kategori as $kategori_r)
-										<option value="{{$kategori_r->id}}">{{$kategori_r->nama_kategori}}</option>
-									@endforeach
+								<select name="kategori" class="form-control input-flat" required="">
+									<option value="" disabled>Pilih kategori</option>
+									<?php $__currentLoopData = $kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori_r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<option value="<?php echo e($kategori_r->id); ?>"><?php echo e($kategori_r->nama_kategori); ?></option>
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</select>
 							</div>
 						</div>
@@ -70,26 +70,5 @@
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        @if($change->source_type == 'gambar')
-			<img src="{{$change->source}}" alt="">
-		@elseif($change->source_type == 'video')
-			<object width="420" height="315" data="{{$change->source}}">
-			</object>
-		@elseif($change->source_type == 'embed')
-			{!! $change->source !!}
-		@endif
-      </div>
-    </div>
-  </div>
-</div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('dashboard.berita.berita_layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

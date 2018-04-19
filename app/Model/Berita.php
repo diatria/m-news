@@ -26,6 +26,7 @@ class Berita extends Model
         $table->source_type = $req->input('s_type');
     	$table->url = str_slug($req->input('judul'));
     	$table->display = 'Yes';
+        $table->time = date('Y-m-d H:i:s');
     	$table->save();
 
     	return $table;
