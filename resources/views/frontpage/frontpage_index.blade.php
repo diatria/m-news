@@ -1,5 +1,9 @@
 @extends('frontpage.frontpage_layout')
 @section('content')
+@php
+use App\Helper\Time;
+@endphp
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 <div class="col-sm-9">
 	<!-- INI SLIDE IMAGE
 	==========================================================================================================-->
@@ -13,9 +17,9 @@
 			@foreach($berita_slider as $slider)
 			
 			@if($no_b == 0)
-			<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" class="item active">
+			<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" class="item active" target="_blank">
 				@else
-				<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" class="item">
+				<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" class="item" target="_blank">
 					@endif
 					@if($slider->source_type == 'gambar')
 					<img src="{{$slider->source}}" alt="Los Angeles" style="width:100%; height: 350px;">
@@ -40,94 +44,63 @@
 		<br>
 		<!-- INI LIST 4 IMAGE
 		==========================================================================================================-->
-		<div class="row">
+		<div class="row remove-margin-grid">
 			@foreach($berita_slider as $slider)
-			<div class="col-md-3">
-				<div class="thumbnail sm">
-					<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" target="_blank">
-						<img src="{{$slider->source}}" alt="Lights" style="width:100%">
-						<div class="caption">
-							<p>{{str_limit($slider->judul, 50)}}</p>
-						</div>
-					</a>
-				</div>
+			<div class="col-md-3 remove-padding-grid limg">
+				<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $slider->id_kategori)->first()->nama_kategori}}/{{$slider->url}}" target="_blank">
+					<img src="{{$slider->source}}" alt="Lights" style="width:100%; height: 125px;">
+					<div class="caption">
+						<p>{{str_limit($slider->judul, 50)}}</p>
+					</div>
+				</a>
 			</div>
 			@endforeach
 		</div>
 		<!-- INI Iklan 6
 		==========================================================================================================-->
 		<div class="row iklan6">
-			<img src="{{$iklan['iklan6']['gambar_iklan']}}" width="95%" height="60px"/>
+			<div class="col-md-12">
+				<img src="{{$iklan['iklan6']['gambar_iklan']}}" width="100%" height="60px"/>
+			</div>
 		</div>
 		<hr />
 		<!-- INI berita Infografis
 		==========================================================================================================-->
-		<h4 style="text-align: left;"><a><u>INFO GRAFIS</u></a></h4>
+		<h4 style="text-align: left;" class="berita-terkini-header"><span class="berita-terkini">INFOGRAFIS</span></h4>
 		<div class="row">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/w3images/lights.jpg" target="_blank">
-						<img src="slide/gbr1.png" alt="Lights" style="width:100%">
-						<div class="caption">
-							<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-						</div>
-					</a>
-				</div>
+			@if($infografis_big)
+			<div class="col-md-6">
+				<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $infografis_big->id_kategori)->first()->nama_kategori}}/{{$infografis_big->url}}" target="_blank">
+					<img src="{{$infografis_big->source}}" alt="Lights" style="width:100%">
+					<span class="infografis-kategori">
+						Infografis
+					</span>
+					<div class="infografis-caption">
+						<p>{{$infografis_big->judul}}</p>
+					</div>
+				</a>
 			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/w3images/nature.jpg" target="_blank">
-						<img src="slide/gbr2.png" alt="Nature" style="width:100%">
-						<div class="caption">
-							<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+			@endif
+			<div class="col-md-6 no-gutters remove-padding-grid">
+				@foreach($infografis_small as $infografis)
+					<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $infografis_big->id_kategori)->first()->nama_kategori}}/{{$infografis_big->url}}" class="row list-small no-gutters" target="_blank">
+						<div class="col-md-5 remove-padding-grid">
+							<img src="{{$infografis->source}}" alt="">
+						</div>
+						<div class="col-md-6 remove-padding-grid">
+							<div class="list-small-kategori">Infografis</div>
+							<div class="list-small-title">{{$infografis->judul}}</div>
 						</div>
 					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/w3images/fjords.jpg" target="_blank">
-						<img src="slide/gbr3.png" alt="Fjords" style="width:100%">
-						<div class="caption">
-							<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/w3images/fjords.jpg" target="_blank">
-						<img src="slide/gbr3.png" alt="Fjords" style="width:100%">
-						<div class="caption">
-							<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/w3images/lights.jpg" target="_blank">
-						<img src="slide/gbr2.png" alt="Lights" style="width:100%">
-						<div class="caption">
-							<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/w3images/nature.jpg" target="_blank">
-						<div class="caption">
-							<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-						</div>
-					</a>
-				</div>
+				@endforeach				
 			</div>
 		</div>
 		<!-- INI iklan7
 		==========================================================================================================-->
 		<div class="row iklan7">
-			<img src="{{$iklan['iklan7']['gambar_iklan']}}" width="95%" height="60px">
+			<div class="col-md-12">
+				<img src="{{$iklan['iklan7']['gambar_iklan']}}" width="100%" height="60px">
+			</div>
 		</div>
 		<hr>
 		<!-- INI berita Berita Terkini
@@ -154,49 +127,57 @@
 					</div>
 				</td>
 				@endif
-				<td class="bt {{$news->source_type}}"><a href="#"><h2>{{$news->judul}}</h2></a></td>
+				<td class="bt {{$news->source_type}}">
+					<a href="{{url('view/'.App\Model\Kategori::detail($news->id_kategori)->nama_kategori.'/'.$news->url)}}" target="_blank">
+						<h2>
+							{{$news->judul}}
+						</h2>
+					</a>
+					<div class="bt-info">
+						<div class="bt-kategori">{{App\Model\Kategori::detail($news->id_kategori)->nama_kategori}}</div>
+						<div class="bt-tanggal">{{Time::IndonesiaMonth($news->time)}}</div>
+					</div>
+				</td>
 			</tr>
 		</table>
 		@endforeach
 		<hr>
 		<!-- INI SLIDE IMAGE
 		==========================================================================================================-->
-		<h4 style="text-align: left;"><a><u>IMAGES</u></a></h4>
-		<div class="w3-content" style="max-width:800px">
-			<img class="mySlides" src="slide/gbr1.png" style="width:100%">
-			<img class="mySlides" src="slide/gbr2.png" style="width:100%">
-			<img class="mySlides" src="slide/gbr3.png" style="width:100%">
+		<h4 style="text-align: left;" class="berita-terkini-header"><span class="berita-terkini">FOTO</span></h4>
+		<div class="image-content">
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators image-controll-small-ci" style="z-index: 0;">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox" style="height: 540px">
+					@php
+					$no_c = 0;
+					@endphp
+
+					@foreach($foto as $image)
+					@if($no_c == 0)
+					<a href="{{url('view/'.App\Model\Kategori::detail($image->id_kategori)->nama_kategori.'/'.$image->url)}}" class="item active" target="_blank">
+					@else
+					<a href="{{url('view/'.App\Model\Kategori::detail($image->id_kategori)->nama_kategori.'/'.$image->url)}}" class="item" target="_blank">
+					@endif
+						<img src="{{$image->source}}" alt="" class="image-content-small">
+						<div class="carousel-caption image-content-caption">
+							{{str_limit($image->judul, 50)}}
+						</div>
+					</a>
+					@php
+					$no_c = $no_c + 1
+					@endphp
+					@endforeach
+				</div>
+			</div>
 		</div>
-		<div class="w3-center">
-			<button class="w3-button demo" onclick="currentDiv(1)">1</button>
-			<button class="w3-button demo" onclick="currentDiv(2)">2</button>
-			<button class="w3-button demo" onclick="currentDiv(3)">3</button>
-		</div>
-		<script>
-		var slideIndex = 1;
-		showDivs(slideIndex);
-		function plusDivs(n) {
-		showDivs(slideIndex += n);
-		}
-		function currentDiv(n) {
-		showDivs(slideIndex = n);
-		}
-		function showDivs(n) {
-		var i;
-		var x = document.getElementsByClassName("mySlides");
-		var dots = document.getElementsByClassName("demo");
-		if (n > x.length) {slideIndex = 1}
-		if (n < 1) {slideIndex = x.length}
-		for (i = 0; i < x.length; i++) {
-		x[i].style.display = "none";
-		}
-		for (i = 0; i < dots.length; i++) {
-		dots[i].className = dots[i].className.replace(" w3-red", "");
-		}
-		x[slideIndex-1].style.display = "block";
-		dots[slideIndex-1].className += " w3-red";
-		}
-		</script>
 		<hr>
 		<!-- INI berita Berita Terkini
 		==========================================================================================================-->
@@ -223,37 +204,93 @@
 					</div>
 				</td>
 				@endif
-				<td class="bt {{$news->source_type}}"><a href="#"><h2>{{$news->judul}}</h2></a></td>
+				<td class="bt {{$news->source_type}}">
+					<a href="{{url('view/'.App\Model\Kategori::detail($news->id_kategori)->nama_kategori.'/'.$news->url)}}" target="_blank">
+						<h2>
+							{{$news->judul}}
+						</h2>
+						<div class="bt-info">
+							<div class="bt-kategori">{{App\Model\Kategori::detail($news->id_kategori)->nama_kategori}}</div>
+							<div class="bt-tanggal">{{Time::IndonesiaMonth($news->time)}}</div>
+						</div>
+					</a>
+					
+				</td>
 			</tr>
 		</table>
 		@endforeach
+		@if($berita_terbaru_first->count() > 2)
+		<div class="btn-loadmore">
+			<button class="btn btn-primary btn-block">Muat berita lebih banyak</button>
+		</div>
+		@endif
 	</div>
 	<!--// 1.2.2 Bagian Sidebar
 	==================================================================================================== -->
-	<div class="col-sm-3">
+	<div class="col-sm-3 remove-padding-grid">
 		<img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
 		<img src="{{$iklan['iklan5']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
 	</div>
-	<div class="col-md-3">
-		@foreach($berita_popular as $popular)
-		<div class="thumbnail md">
-			<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}/{{$popular->url}}" target="_blank">
-				@if($popular->source_type == 'gambar')
-					<img src="{{$popular->source}}" alt="Los Angeles" style="width:100%; max-height: ">
-				@elseif($popular->source_type == 'video')
-					<object data="{{$popular->source}}" style="width: 100%;">
+	<div class="col-sm-3 remove-padding-grid">
+		<div class="icon-social">
+			<div class="list-icon">
+				<i class="fab fa-facebook-f"></i>
+			</div>
+			<div class="list-icon">
+				<i class="fab fa-twitter"></i>
+			</div>
+			<div class="list-icon">
+				<i class="fab fa-google-plus-g"></i>
+			</div>
+			<div class="list-icon">
+				<i class="fab fa-instagram"></i>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 remove-padding-grid">
+		<h4 class="sidebar-tv">
+			Mamuju TV
+		</h4>
+		@foreach($mamujutv as $mamujutv)
+			<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $mamujutv->id_kategori)->first()->nama_kategori}}/{{$mamujutv->url}}" class="mamujutv" target="_blank">
+				@if($mamujutv->source_type == 'gambar')
+					<img src="{{$mamujutv->source}}" alt="Los Angeles" style="width:100%; max-height: ">
+				@elseif($mamujutv->source_type == 'video')
+					<object data="{{$mamujutv->source}}" style="width: 100%;">
 					</object>
-				@elseif($popular->source_type == 'embed')
+				@elseif($mamujutv->source_type == 'embed')
 					<div class="embed unset">
-						{!! $popular->source !!}
+						{!! $mamujutv->source !!}
 					</div>
 				@endif
 				<div class="caption">
-					<p>{{str_limit($popular->judul, 70)}}</p>
+					<p>{{str_limit($mamujutv->judul, 70)}}</p>
 				</div>
 			</a>
-		</div>
 		@endforeach
 	</div>
+	<div class="col-sm-3 remove-padding-grid">
+		<img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
+	</div>
+	@if($berita_terbaru_first->count() > 2)
+	<div class="col-md-3 remove-padding-grid">
+		<div class="berita-top">
+			<h4 class="title">
+				Berita Terpopuler
+			</h4>
+			@foreach($berita_popular as $popular)
+			<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}/{{$popular->url}}" class="list-berita-top" target="_blank">
+				<div class="kategori">{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}</div>
+				<div class="judul">{{$popular->judul}}</div>
+				<div class="preview">{{str_limit($slider->judul, 50)}}</div>
+			</a>
+			@endforeach
+		</div>
+
+	</div>
+	<div class="col-sm-3 remove-padding-grid">
+		<img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
+	</div>
+	@endif
 </div>
 @endsection

@@ -250,12 +250,13 @@
                         <li class="nav-label">Home</li>
                         <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Dashboard</a></li>
                         <li><a class="" href="{{url('db_berita')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Berita</a></li>
-                        <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Mamuju TV</a></li>
-                        <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Foto</a></li>
+                        <li><a class="" href="{{url('db_mamujutv')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Mamuju TV</a></li>
+                        <li><a class="" href="{{url('db_infografis')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Infografis</a></li>
+                        <li><a class="" href="{{url('db_foto')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Foto</a></li>
                         <li><a class="" href="{{url('db_kategori')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Kategori</a></li>
                         <li><a class="" href="{{url('db_iklan')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengatruran Iklan</a></li>
-                        <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Statistik</a></li>
-                        <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengguna</a></li>
+                        <li><a class="" href="{{url('db_statistik')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Statistik</a></li>
+                        <li><a class="" href="{{url('db_pengguna')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengguna</a></li>
                         <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Logout</a></li>
                     </ul>
                 </nav>

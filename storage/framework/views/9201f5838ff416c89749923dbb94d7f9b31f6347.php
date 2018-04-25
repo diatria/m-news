@@ -7,7 +7,7 @@
 		</div>
 		<div class="card-body">
 			<div class="basic-form">
-				<form action="<?php echo e(url('db_iklan/change')); ?>/<?php echo e($change->id); ?>" method="post">
+				<form action="<?php echo e(url('db_iklan/change')); ?>/<?php echo e($change->id); ?>" method="post" enctype="multipart/form-data">
 					<?php echo e(csrf_field()); ?>
 
 					<div class="row">

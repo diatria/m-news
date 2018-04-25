@@ -41,7 +41,7 @@ class Statistik extends Model
     	return $unique;
 	}
 
-    public static function insert($id = null)
+    public static function insert($id = null, $visitor_table)
     {
     	$url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		$unique = self::getUniqueIp();    	
@@ -54,7 +54,15 @@ class Statistik extends Model
     	$table->save();
 
         if ($table->unique == 'Yes') {
-            Berita::countVisitor($id);
+            if ($visitor_table == 'infografis') {
+                Infografis::countVisitor($id);
+            } elseif ($visitor_table == 'mamujutv') {
+                Mamujutv::countVisitor($id);
+            } elseif ($visitor_table == 'foto') {
+                Foto::countVisitor($id);
+            } else {
+                Berita::countVisitor($id);
+            }
         }
     }
 

@@ -15,7 +15,7 @@ class KategoriController extends Controller
 	public function viewer(Request $request)
 	{
 		try {
-			$data_kategori = kategori::render()->where('display', 'Yes');
+			$data_kategori = Kategori::where('display', 'Yes')->get();
 			if ($request['render'] != 'json') {
 				return view('dashboard.kategori.kategori_create')
 				->with('data', $data_kategori);
@@ -35,7 +35,7 @@ class KategoriController extends Controller
 	public function change_viewer($id)
 	{
 		try {
-			$data_kategori = Kategori::render()->where('display', 'Yes');
+			$data_kategori = kategori::where('display', 'Yes')->get();
 			$data_change = Kategori::find($id);
 			return view('dashboard.kategori.kategori_edit')
 			->with('data', $data_kategori)

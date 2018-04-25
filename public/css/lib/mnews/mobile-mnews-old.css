@@ -1,0 +1,94 @@
+.rm-mp{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.nav{
+  background-color: #034759 !important;
+}
+.nav *{
+	color: #FFF !important;
+}
+.nav .nav-logo{
+  width: 150px;
+}
+
+/*Berita terbaru*/
+.berita-terbaru-big{
+	display: block;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #E0E0E0;
+	background-color: #034759 !important;
+}
+
+.berita-terbaru-big img{
+	width: 100%;
+	max-height: 400px;
+}
+.berita-terbaru-big .informasi .kategori{
+	display: block;
+	padding: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #F44336;
+}
+.berita-terbaru-big .informasi .judul{
+	display: block;
+    padding: 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFF;
+}
+.berita-terbaru-big .informasi .deskripsi{
+	display: block;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #FFF;
+}
+.list-berita{
+	padding: 10px;
+	border-bottom: 1px solid #E0E0E0;
+}
+.list-berita.bg-colored{
+	background-color: #034759;
+}
+.list-berita img{
+	width: 100%;
+	max-height: 200px;
+}
+.list-berita .informasi .kategori{
+	display: block;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #F44336;
+}
+.list-berita .informasi .judul{
+	display: block;
+    font-size: 14px;
+    font-weight: 600;
+	color: #FFF;
+}
+.list-berita .informasi .judul.colored{
+	color: #034759;
+}
+.judul-block{
+	padding: 10px;
+	font-size: 14px;
+	font-weight: 600;
+}
+.judul-block span{
+	display: inline-block;
+	border-bottom: 2px solid #034759;
+	padding: 0 10px 2px 0;
+}
+
+.embed iframe{
+	width: 100% !important;
+	height: auto;
+}
+object{
+	display: block;
+	width: 100%;
+	height: auto;
+}

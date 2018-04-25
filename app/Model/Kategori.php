@@ -43,4 +43,16 @@ class Kategori extends Model
         $table = Kategori::find($id);
         return $table;
     }
+
+    public static function as_menu($id)
+    {
+        $table = self::find($id);
+        if ($table->as_menu) {
+            $table->as_menu = null;
+        } else {
+            $table->as_menu = 'true';
+        }
+        $table->save();
+        return $table;
+    }
 }

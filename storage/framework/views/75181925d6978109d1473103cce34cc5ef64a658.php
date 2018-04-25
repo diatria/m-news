@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <?php
-App\Model\Statistik::insert($berita->id);
+App\Model\Statistik::insert($berita->id, $visitor_table);
 ?>
 <style>
 	.bg-w{
@@ -30,6 +30,7 @@ App\Model\Statistik::insert($berita->id);
 		font-size: 12px;
 	}
 </style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 <div class="col-sm-9">
 	<div class="bg-w carousel slide" id="myCarousel">
 		<div class="bc">MAMUJU TODAY / <?php echo e($kategori); ?> / Detail Berita</div>
@@ -43,58 +44,65 @@ App\Model\Statistik::insert($berita->id);
 			<object width="600" height="315" data="<?php echo e($berita->source); ?>">
 			</object>
 		<?php endif; ?>
-		<div class="kt-foto">Foto: Salah satu bangunan di Suriah yang rusak akibat serangan AS Cs. (LOUAI BESHARA/AFP).</div>
 		<div class="conten-berita">
 			<?php echo $berita->konten; ?>
 
 		</div>
 	</div>
+
+	<div class="komentar">
+		<div class="label-komentar">Komentar Anda</div>
+		<div class="list-komentar">
+			<div class="list">
+				<img src="http://via.placeholder.com/50x50" alt="" class="avatar">
+				<div class="nama">Dimas Adi Satria</div>
+				<div class="isi-komentar">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque commodi ut, nobis voluptas ex vero iste debitis repellendus deserunt laudantium aliquid! Architecto dolore, eius esse a rem. Quibusdam, natus, sequi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi earum delectus dolorem quo, beatae voluptate officia. Fugiat minus maiores animi asperiores, error delectus dolores ex ratione. Totam harum impedit, quaerat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, quasi alias id dolor quam fugiat voluptate, possimus quis maxime officiis architecto eaque dolorum reprehenderit eum dolore reiciendis dolores quaerat. Numquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum temporibus voluptates ut asperiores, eius sunt mollitia, repellendus officia, doloremque consequatur enim maiores dicta. Culpa saepe quisquam, maxime fugit excepturi asperiores.</div>
+			</div>
+			<div class="list">
+				<img src="http://via.placeholder.com/50x50" alt="" class="avatar">
+				<div class="nama">Dimas Adi Satria</div>
+				<div class="isi-komentar">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque commodi ut, nobis voluptas ex vero iste debitis repellendus deserunt laudantium aliquid! Architecto dolore, eius esse a rem. Quibusdam, natus, sequi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi earum delectus dolorem quo, beatae voluptate officia. Fugiat minus maiores animi asperiores, error delectus dolores ex ratione. Totam harum impedit, quaerat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, quasi alias id dolor quam fugiat voluptate, possimus quis maxime officiis architecto eaque dolorum reprehenderit eum dolore reiciendis dolores quaerat. Numquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum temporibus voluptates ut asperiores, eius sunt mollitia, repellendus officia, doloremque consequatur enim maiores dicta. Culpa saepe quisquam, maxime fugit excepturi asperiores.</div>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="col-sm-3">
-	<img src="iklan4.png" alt="Chicago" style="width:100%;">
-	<img src="iklan5.png" alt="Chicago" style="width:100%;">
-	<div class="thumbnail">
-		<a href="/beritaterkini.png" target="_blank">
-			<img src="beritaterkini.png" alt="Lights" style="width:100%">
-			<div class="caption">
-				<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			</div>
-		</a>
+	<img src="<?php echo e($iklan['iklan4']['gambar_iklan']); ?>" alt="Chicago" style="width:100%;">
+	<img src="<?php echo e($iklan['iklan5']['gambar_iklan']); ?>" alt="Chicago" style="width:100%;">
+</div>
+<div class="col-sm-3 remove-padding-grid">
+	<div class="icon-social">
+		<div class="list-icon">
+			<i class="fab fa-facebook-f"></i>
+		</div>
+		<div class="list-icon">
+			<i class="fab fa-twitter"></i>
+		</div>
+		<div class="list-icon">
+			<i class="fab fa-google-plus-g"></i>
+		</div>
+		<div class="list-icon">
+			<i class="fab fa-instagram"></i>
+		</div>
 	</div>
 </div>
-<div class="col-md-3">
-	<div class="thumbnail">
-		<a href="/beritaterkini.png" target="_blank">
-			<img src="beritaterkini.png" alt="Lights" style="width:100%">
-			<div class="caption">
-				<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			</div>
+<div class="col-sm-3 remove-padding-grid">
+	<img src="<?php echo e($iklan['iklan4']['gambar_iklan']); ?>" alt="Chicago" style="width:100%;">
+</div>
+<div class="col-md-3 remove-padding-grid">
+	<div class="berita-top">
+		<h4 class="title">
+			Berita Terpopuler
+		</h4>
+		<?php $__currentLoopData = $berita_popular; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $popular): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+		<a href="<?php echo e(url('view')); ?>/<?php echo e(App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori); ?>/<?php echo e($popular->url); ?>" class="list-berita-top" target="_blank">
+			<div class="kategori"><?php echo e(App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori); ?></div>
+			<div class="judul"><?php echo e($popular->judul); ?></div>
+			<div class="preview"><?php echo e(str_limit($popular->judul, 50)); ?></div>
 		</a>
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	</div>
-	<div class="thumbnail">
-		<a href="/beritaterkini.png" target="_blank">
-			<img src="beritaterkini.png" alt="Lights" style="width:100%">
-			<div class="caption">
-				<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			</div>
-		</a>
-	</div>
-	<div class="thumbnail">
-		<a href="/beritaterkini.png" target="_blank">
-			<img src="beritaterkini.png" alt="Lights" style="width:100%">
-			<div class="caption">
-				<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			</div>
-		</a>
-	</div>
-	<div class="thumbnail">
-		<a href="/beritaterkini.png" target="_blank">
-			<img src="beritaterkini.png" alt="Lights" style="width:100%">
-			<div class="caption">
-				<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			</div>
-		</a>
-	</div>
+
 </div>
 </div>
 <?php $__env->stopSection(); ?>
