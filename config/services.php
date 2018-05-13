@@ -34,5 +34,11 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    
+    'facebook' => [
+        'client_id' => '212791129313696',         // Your GitHub Client ID
+        'client_secret' => '116ee4042f0f8c255ba48099386fd77f', // Your GitHub Client Secret
+        'redirect' => 'https://new.mamujutoday.com/login/facebook/callback',
+    ],
 
 ];

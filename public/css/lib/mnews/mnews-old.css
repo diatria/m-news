@@ -16,6 +16,7 @@ padding-top: 70px;
 .navbar{
   border-radius: 0px !important;
 }
+
 .center ul{
 width: -moz-fit-content;
 width: -webkit-fit-content;
@@ -57,18 +58,34 @@ overflow: visible;
 background-color: #023340;
 border-color: #023340;
 text-align: center;
-padding: 15px;
 font-size: 12px;
 height: 10px;
 }
+.topnav .collapse{
+  margin: 0 auto;
+  width: fit-content;
+}
 .topnav a {
-color: #f2f2f2;
+color: #f2f2f2 !important;
 padding: 6px 8px;
 text-decoration: none;
 font-size: 12px;
+text-transform: uppercase;
+}
+.topnav .dropdown.open>a, 
+.topnav .dropdown.open>a:hover, 
+.topnav .dropdown.open>a:focus, 
+.topnav .dropdown.open>a:active,
+.topnav .dropdown-menu>li>a:hover,
+.topnav .dropdown-menu>li>a:focus,
+.topnav .dropdown-menu>li>a:active{
+  background-color: transparent !important;
+}
+.topnav .dropdown-menu{
+  background-color: #023340;
 }
 .topnav a:hover {
-color: red;
+color: #F44336 !important;
 }
 .topnav a.active {
 color: green;
@@ -96,7 +113,7 @@ padding: 10px;
 .embed.artikel > *{
   max-width: 500px !important;
   width: 500px;
-  height: 280px;
+  min-height: 280px;
 }
 .embed-bt{
   padding: 5px !important;
@@ -115,12 +132,12 @@ padding: 10px;
   height: 25px !important;
   display: initial;
 }
-.bt-kategori{
+.bt-kategori, .bt-kategori:hover{
   display: inline-block;
   width: 100px;
   text-transform: uppercase;
   font-weight: 600;
-  color: #F44336;
+  color: #F44336 !important;
 }
 .bt-tanggal{
   display: inline-block;
@@ -174,14 +191,14 @@ padding: 10px;
   text-align: left;
   color:  #034759;
 }
-.list-small-kategori{
+.list-small-kategori, .list-kategori:hover{
   font-weight: 600;
   text-align: left;
   text-transform: uppercase;
-  color: #F44336;
-
+  color: #F44336 !important;
+  display: block;
 }
-.infografis-kategori{
+.infografis-kategori, .infografis-kategori:hover{
   font-size: 18px;
   text-align: left;
   display: block;
@@ -204,13 +221,14 @@ padding: 10px;
 }
 
 .image-content-small{
-  padding: 20px 0 100px 0;
-  height: 500px;
+  padding: 0px 0 100px 0;
+  height: 550px;
+  max-height: 550px;
   width: 100%;
 }
 
 .image-controll-small-ci{
-  top: 0;
+  top: -10px;
 }
 .image-controll-small-ci > li.active{
   background-color: #FF9800;
@@ -274,7 +292,9 @@ padding: 10px;
     text-transform: uppercase;
     color: #034759;
     border-bottom: 1px solid #616161;
-    padding-bottom: 5px;
+    padding-bottom: 5px !important;
+    font-size: 18px;
+    text-align: center;
 }
 .list-berita-top{
   padding: 20px 10px;
@@ -288,6 +308,7 @@ padding: 10px;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
+  display: block;
 }
 .list-berita-top .judul{
   text-align: left;
@@ -317,7 +338,7 @@ padding: 10px;
   background-color: #034759;
 }
 .footer{
-  background-color: #034759;
+  background-color: #023340;
   width: 100%;
   height: 150px;
 }
@@ -398,15 +419,17 @@ padding: 10px;
   border-radius: 0;
 }
 .komentar .list-komentar{
- display: inline-block;
+ display: block;
 }
 .komentar .list{
   padding: 20px 10px 10px 10px;
   border-bottom: 1px solid #E0E0E0;
+  min-height: 80px;
 }
 .komentar .list img {
   display: inline-block;
-    float: left;
+  float: left;
+  width: 50px;
 }
 .komentar .list .nama{
   margin: 0 70px;
@@ -421,3 +444,66 @@ padding: 10px;
   margin: 0 70px;
 }
 
+.input-komentar{
+  display: flex;
+  padding: 10px;
+}
+.input-komentar .image-profil{
+  display: inline-block;
+  float: left;
+}
+.input-komentar .image-profil img{
+  width: 50px;
+  height: 50px;
+}
+.input-komentar textarea{
+  width: 100%;
+  margin: 0 0 0 20px;
+  height: 100px;
+}
+.berita-terkait .berita-terkait-label{
+  margin: 20px 0;
+  padding: 5px 0 0 0;
+  border-top: 2px solid #034759;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #034759
+}
+.berita-terkait-list{
+  padding: 10px 0;
+  display: block;
+}
+.berita-terkait-list img,iframe,object{
+  width: 100%;
+  max-height: 200px;
+}
+.berita-terkait-list .berita-terkait-content .berita-terkait-kategori{
+  text-align: left;
+  padding: 5px 0;
+  font-weight: 600;
+  color: red;
+  text-transform: uppercase;
+  display: block;
+}
+.berita-terkait-list .berita-terkait-content .berita-terkait-title{
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #034759;
+}
+.berita-lainnya{
+  margin-bottom: 30px;
+}
+.list-berita-lainnya{
+  max-height: 200px;
+}
+.list-berita-lainnya img,iframe,object{
+  width: 100%;
+  max-height: 130px;
+}
+.list-berita-lainnya .judul{
+  text-align: left;
+  font-weight: 600;
+  color: #034759;
+  padding: 10px 0;
+}

@@ -27,7 +27,7 @@ class KategoriController extends Controller
 			}
 			
 		} catch (\Exception $e) {
-			return $e;
+			return redirect()->action('FrontPage\ErrorController@E500');
 		}
 		
 	}
@@ -41,7 +41,7 @@ class KategoriController extends Controller
 			->with('data', $data_kategori)
 			->with('change', $data_change);
 		} catch (\Exception $e) {
-			return $e;
+			return redirect()->action('FrontPage\ErrorController@E500');
 		}
 	}
 
@@ -51,7 +51,7 @@ class KategoriController extends Controller
     		kategori::insert($request);
     		return ResponseRedirect::go('db_kategori', 'Berhasil menyimpan data kategori', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }
@@ -62,7 +62,7 @@ class KategoriController extends Controller
     		kategori::change($request, $id);
     		return ResponseRedirect::go('db_kategori', 'Berhasil merubah data kategori', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     }
 
@@ -72,7 +72,7 @@ class KategoriController extends Controller
     		kategori::destroy($id);
     		return ResponseRedirect::go('db_kategori', 'Berhasil menghapus data kategori', 'danger');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }

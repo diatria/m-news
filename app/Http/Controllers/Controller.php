@@ -12,5 +12,3 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 }
-
-// echo Statistik::insert();

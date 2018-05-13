@@ -60,7 +60,7 @@ use App\Helper\Time;
 		==========================================================================================================-->
 		<div class="row iklan6">
 			<div class="col-md-12">
-				<img src="{{$iklan['iklan6']['gambar_iklan']}}" width="100%" height="60px"/>
+				<img src="{{$iklan['iklan6']['gambar_iklan']}}" width="100%" height="60px" onerror="this.style.display='none'"/>
 			</div>
 		</div>
 		<hr />
@@ -72,9 +72,7 @@ use App\Helper\Time;
 			<div class="col-md-6">
 				<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $infografis_big->id_kategori)->first()->nama_kategori}}/{{$infografis_big->url}}" target="_blank">
 					<img src="{{$infografis_big->source}}" alt="Lights" style="width:100%">
-					<span class="infografis-kategori">
-						Infografis
-					</span>
+					<object><a href="{{url('view/'.App\Model\Kategori::where('id', $infografis_big->id_kategori)->first()->nama_kategori)}}" class="infografis-kategori">{{App\Model\Kategori::where('id', $infografis_big->id_kategori)->first()->nama_kategori}}</a></object>
 					<div class="infografis-caption">
 						<p>{{$infografis_big->judul}}</p>
 					</div>
@@ -83,12 +81,12 @@ use App\Helper\Time;
 			@endif
 			<div class="col-md-6 no-gutters remove-padding-grid">
 				@foreach($infografis_small as $infografis)
-					<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $infografis_big->id_kategori)->first()->nama_kategori}}/{{$infografis_big->url}}" class="row list-small no-gutters" target="_blank">
+					<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $infografis->id_kategori)->first()->nama_kategori}}/{{$infografis->url}}" class="row list-small no-gutters" target="_blank">
 						<div class="col-md-5 remove-padding-grid">
 							<img src="{{$infografis->source}}" alt="">
 						</div>
 						<div class="col-md-6 remove-padding-grid">
-							<div class="list-small-kategori">Infografis</div>
+							<object><a href="{{url('view/'.App\Model\Kategori::where('id', $infografis->id_kategori)->first()->nama_kategori)}}" class="list-small-kategori">{{App\Model\Kategori::where('id', $infografis->id_kategori)->first()->nama_kategori}}</a></object>
 							<div class="list-small-title">{{$infografis->judul}}</div>
 						</div>
 					</a>
@@ -99,7 +97,7 @@ use App\Helper\Time;
 		==========================================================================================================-->
 		<div class="row iklan7">
 			<div class="col-md-12">
-				<img src="{{$iklan['iklan7']['gambar_iklan']}}" width="100%" height="60px">
+				<img src="{{$iklan['iklan7']['gambar_iklan']}}" width="100%" height="60px" onerror="this.style.display='none'">
 			</div>
 		</div>
 		<hr>
@@ -134,7 +132,7 @@ use App\Helper\Time;
 						</h2>
 					</a>
 					<div class="bt-info">
-						<div class="bt-kategori">{{App\Model\Kategori::detail($news->id_kategori)->nama_kategori}}</div>
+						<object><a href="{{url('view/'.App\Model\Kategori::where('id', $news->id_kategori)->first()->nama_kategori)}}" class="bt-kategori">{{App\Model\Kategori::where('id', $news->id_kategori)->first()->nama_kategori}}</a></object>
 						<div class="bt-tanggal">{{Time::IndonesiaMonth($news->time)}}</div>
 					</div>
 				</td>
@@ -148,10 +146,20 @@ use App\Helper\Time;
 		<div class="image-content">
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
-				<ol class="carousel-indicators image-controll-small-ci" style="z-index: 0;">
-					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				<ol class="carousel-indicators image-controll-small-ci" style="z-index: 0; top">
+					@php
+					$no_list_slider = 0;
+					@endphp
+					@foreach($foto as $image)
+						@if($no_list_slider == 0)
+						<li data-target="#carousel-example-generic" data-slide-to="{{$no_list_slider}}" class="active"></li>
+						@else
+						<li data-target="#carousel-example-generic" data-slide-to="{{$no_list_slider}}"></li>
+						@endif
+					@php
+					$no_list_slider = $no_list_slider + 1;
+					@endphp
+					@endforeach
 				</ol>
 
 				<!-- Wrapper for slides -->
@@ -162,9 +170,9 @@ use App\Helper\Time;
 
 					@foreach($foto as $image)
 					@if($no_c == 0)
-					<a href="{{url('view/'.App\Model\Kategori::detail($image->id_kategori)->nama_kategori.'/'.$image->url)}}" class="item active" target="_blank">
+					<a href="{{url('view/'.App\Model\Kategori::detail($image->id_kategori)->nama_kategori.'/'.$image->url)}}" class="item active" target="_blank" style="margin-top: 10px;">
 					@else
-					<a href="{{url('view/'.App\Model\Kategori::detail($image->id_kategori)->nama_kategori.'/'.$image->url)}}" class="item" target="_blank">
+					<a href="{{url('view/'.App\Model\Kategori::detail($image->id_kategori)->nama_kategori.'/'.$image->url)}}" class="item" target="_blank" style="margin-top: 10px;">
 					@endif
 						<img src="{{$image->source}}" alt="" class="image-content-small">
 						<div class="carousel-caption image-content-caption">
@@ -210,7 +218,7 @@ use App\Helper\Time;
 							{{$news->judul}}
 						</h2>
 						<div class="bt-info">
-							<div class="bt-kategori">{{App\Model\Kategori::detail($news->id_kategori)->nama_kategori}}</div>
+							<object><a href="{{url('view/'.App\Model\Kategori::where('id', $news->id_kategori)->first()->nama_kategori)}}" class="bt-kategori">{{App\Model\Kategori::where('id', $news->id_kategori)->first()->nama_kategori}}</a></object>
 							<div class="bt-tanggal">{{Time::IndonesiaMonth($news->time)}}</div>
 						</div>
 					</a>
@@ -221,15 +229,15 @@ use App\Helper\Time;
 		@endforeach
 		@if($berita_terbaru_first->count() > 2)
 		<div class="btn-loadmore">
-			<button class="btn btn-primary btn-block">Muat berita lebih banyak</button>
+			<a href="{{url('view/all-new')}}" class="btn btn-primary btn-block">Muat berita lebih banyak</a>
 		</div>
 		@endif
 	</div>
 	<!--// 1.2.2 Bagian Sidebar
 	==================================================================================================== -->
 	<div class="col-sm-3 remove-padding-grid">
-		<img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
-		<img src="{{$iklan['iklan5']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
+		<img src="{{$iklan['iklan4']['gambar_iklan']}}" style="width:100%;">
+		<img src="{{$iklan['iklan5']['gambar_iklan']}}" style="width:100%;">
 	</div>
 	<div class="col-sm-3 remove-padding-grid">
 		<div class="icon-social">
@@ -270,26 +278,25 @@ use App\Helper\Time;
 		@endforeach
 	</div>
 	<div class="col-sm-3 remove-padding-grid">
-		<img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
+		<img src="{{$iklan['iklan4']['gambar_iklan']}}" style="width:100%;">
 	</div>
 	@if($berita_terbaru_first->count() > 2)
 	<div class="col-md-3 remove-padding-grid">
-		<div class="berita-top">
-			<h4 class="title">
-				Berita Terpopuler
-			</h4>
-			@foreach($berita_popular as $popular)
-			<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}/{{$popular->url}}" class="list-berita-top" target="_blank">
-				<div class="kategori">{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}</div>
-				<div class="judul">{{$popular->judul}}</div>
-				<div class="preview">{{str_limit($slider->judul, 50)}}</div>
-			</a>
-			@endforeach
+		<div id="sticky">
+			<div class="berita-top">
+				<h4 class="title">
+					Berita Terpopuler
+				</h4>
+				@foreach($berita_popular as $popular)
+				<a href="{{url('view')}}/{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}/{{$popular->url}}" class="list-berita-top" target="_blank">
+					<object><a href="{{url('view/'.App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori)}}" class="kategori">{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}</a></object>
+					<div class="judul">{{$popular->judul}}</div>
+					<div class="preview">{{str_limit($popular->judul, 50)}}</div>
+				</a>
+				@endforeach
+			</div>
+			<img src="{{$iklan['iklan4']['gambar_iklan']}}" style="width:100%;">
 		</div>
-
-	</div>
-	<div class="col-sm-3 remove-padding-grid">
-		<img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
 	</div>
 	@endif
 </div>

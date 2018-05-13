@@ -54,6 +54,13 @@
 									<option value="video">video</option>
 								</select>
 							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Tanggal Upload</label>
+								<input type="text" name="tgl_upload" class="form-control" value="{{App\Helper\Time::IndonesiaToSys($change->time)}}">
+							    <div class="input-group-addon">
+							        <span class="glyphicon glyphicon-th"></span>
+							    </div>
+							</div>
 						</div>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>

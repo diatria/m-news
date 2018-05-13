@@ -17,11 +17,15 @@ class FotoController extends Controller
 {
     public function viewer()
     {
-    	$kategori = Kategori::render()->where('display', 'Yes');
-    	$foto = Foto::where('display', 'Yes')->get();
-    	return view('dashboard.foto.foto_create')
-    	->with('data', $foto)
-    	->with('kategori', $kategori);
+        try {
+        	$kategori = Kategori::render()->where('display', 'Yes');
+        	$foto = Foto::where('display', 'Yes')->get();
+        	return view('dashboard.foto.foto_create')
+        	->with('data', $foto)
+        	->with('kategori', $kategori);
+        } catch (\Exception $e) {
+            return redirect()->action('FrontPage\ErrorController@E500');
+        }
     }
 
     public function change_viewer($id)
@@ -35,7 +39,7 @@ class FotoController extends Controller
 			->with('change', $data_change)
 			->with('kategori', $kategori);
 		} catch (\Exception $e) {
-			return $e;
+			return redirect()->action('FrontPage\ErrorController@E500');
 		}
 	}
 
@@ -57,7 +61,7 @@ class FotoController extends Controller
     		Foto::insert($request, $file_name);
     		return ResponseRedirect::go('db_foto', 'Berhasil menyimpan data foto', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }
@@ -82,7 +86,7 @@ class FotoController extends Controller
     		Foto::change($request, $id, $file_name);
     		return ResponseRedirect::go('db_foto', 'Berhasil merubah data foto', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     }
 
@@ -92,7 +96,7 @@ class FotoController extends Controller
     		Foto::destroy($id);
     		return ResponseRedirect::go('db_foto', 'Berhasil menghapus data foto', 'danger');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }

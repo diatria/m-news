@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('images/favicon.png')}}">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title>Mamujutoday.com | Admin Dashboard</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{URL::asset('css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -44,10 +44,10 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                        <b><img src="{{URL::asset('images/logo.png')}}" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="{{asset('images/mnews/LOGO-2.png')}}" alt="homepage" class="dark-logo" style="width: 300px;margin-left: 10px;" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="{{URL::asset('images/logo-text.png')}}" alt="homepage" class="dark-logo" /></span>
+                        {{-- <span><img src="{{URL::asset('images/logo-text.png')}}" alt="homepage" class="dark-logo" /></span> --}}
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -55,63 +55,10 @@
                     <!-- toggle and nav items -->
                     <ul class="navbar-nav mr-auto mt-md-0">
                         <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted  " href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                        <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted d-none" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                         <!-- Messages -->
-                        <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-th-large"></i></a>
-                            <div class="dropdown-menu animated zoomIn">
-                                <ul class="mega-dropdown-menu row">
-
-
-                                    <li class="col-lg-3  m-b-30">
-                                        <h4 class="m-b-20">CONTACT US</h4>
-                                        <!-- Contact -->
-                                        <form>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name"> </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Enter email"> </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-info">Submit</button>
-                                        </form>
-                                    </li>
-                                    <li class="col-lg-3 col-xlg-3 m-b-30">
-                                        <h4 class="m-b-20">List style</h4>
-                                        <!-- List style -->
-                                        <ul class="list-style-none">
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-lg-3 col-xlg-3 m-b-30">
-                                        <h4 class="m-b-20">List style</h4>
-                                        <!-- List style -->
-                                        <ul class="list-style-none">
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-lg-3 col-xlg-3 m-b-30">
-                                        <h4 class="m-b-20">List style</h4>
-                                        <!-- List style -->
-                                        <ul class="list-style-none">
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                        <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted d-none" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-th-large"></i></a>
                         </li>
                         <!-- End Messages -->
                     </ul>
@@ -119,12 +66,12 @@
                     <ul class="navbar-nav my-lg-0">
 
                         <!-- Search -->
-                        <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-search"></i></a>
+                        {{-- <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search">
                                 <input type="text" class="form-control" placeholder="Search here"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
+                        </li> --}}
                         <!-- Comment -->
-                        <li class="nav-item dropdown">
+                       {{--  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
 								<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
 							</a>
@@ -170,10 +117,10 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                         <!-- End Comment -->
                         <!-- Messages -->
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-envelope"></i>
 								<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
 							</a>
@@ -219,12 +166,12 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                         <!-- End Messages -->
                         <!-- Profile -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
-                            <div class="dropdown-menu dropdown-menu-right animated zoomIn">
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{Auth::user()->foto}}" alt="user" class="profile-pic" /></a>
+                            {{-- <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="#"><i class="ti-user"></i> Profile</a></li>
                                     <li><a href="#"><i class="ti-wallet"></i> Balance</a></li>
@@ -232,7 +179,7 @@
                                     <li><a href="#"><i class="ti-settings"></i> Setting</a></li>
                                     <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </li>
                     </ul>
                 </div>
@@ -255,9 +202,19 @@
                         <li><a class="" href="{{url('db_foto')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Foto</a></li>
                         <li><a class="" href="{{url('db_kategori')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Kategori</a></li>
                         <li><a class="" href="{{url('db_iklan')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengatruran Iklan</a></li>
-                        <li><a class="" href="{{url('db_statistik')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Statistik</a></li>
-                        <li><a class="" href="{{url('db_pengguna')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengguna</a></li>
-                        <li><a class="" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i>Logout</a></li>
+                        <li><a class="" href="{{url('db_menu')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengatruran Menu</a></li>
+                        {{-- <li><a class="" href="{{url('db_statistik')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Statistik</a></li> --}}
+                        @if(Auth::user()->role == 'SU')
+                        <li>
+                            <a class="" href="{{url('db_pengguna')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Pengguna</a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{url('db_pengguna/user')}}">List User</a></li>
+                                <li><a href="{{url('db_pengguna/admin')}}">List Admin</a></li>
+                                <li><a href="{{url('db_pengguna/add')}}">Tambah Admin</a></li>
+                            </ul>
+                        </li>
+                        @endif
+                        <li><a class="" href="{{url('login/revoke')}}" aria-expanded="false"><i class="fa fa-tachometer"></i>Logout</a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

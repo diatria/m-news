@@ -58,7 +58,7 @@ use App\Helper\Time;
           </div>
           @endif
           <span class="content">
-            <span class="kategori">{{App\Model\Kategori::where('id', $artikel->id_kategori)->first()->nama_kategori}}</span>
+            <object><a href="{{url('view/'.App\Model\Kategori::where('id', $artikel->id_kategori)->first()->nama_kategori)}}" class="kategori">{{App\Model\Kategori::where('id', $artikel->id_kategori)->first()->nama_kategori}}</a></object>
             <span class="title">{{str_limit($artikel->judul, 110)}}</span>
           </span>
         </a>
@@ -77,8 +77,8 @@ use App\Helper\Time;
   <!--// 1.2.2 Bagian Sidebar
   ==================================================================================================== -->
   <div class="col-sm-3 remove-padding-grid">
-    <img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
-    <img src="{{$iklan['iklan5']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
+    <img src="{{$iklan['iklan4']['gambar_iklan']}}" style="width:100%;">
+    <img src="{{$iklan['iklan5']['gambar_iklan']}}" style="width:100%;">
   </div>
   <div class="col-sm-3 remove-padding-grid">
     <div class="icon-social">
@@ -97,7 +97,7 @@ use App\Helper\Time;
     </div>
   </div>
   <div class="col-sm-3 remove-padding-grid">
-    <img src="{{$iklan['iklan4']['gambar_iklan']}}" alt="Chicago" style="width:100%;">
+    <img src="{{$iklan['iklan4']['gambar_iklan']}}" style="width:100%;">
   </div>
   @if($data->count() > 4)
   <div class="col-md-3 remove-padding-grid">
@@ -107,7 +107,7 @@ use App\Helper\Time;
       </h4>
       @foreach($berita_popular as $popular)
       <a href="{{url('view')}}/{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}/{{$popular->url}}" class="list-berita-top" target="_blank">
-        <div class="kategori">{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}</div>
+        <object><a href="{{url('view/'.App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori)}}" class="kategori">{{App\Model\Kategori::where('id', $popular->id_kategori)->first()->nama_kategori}}</a></object>
         <div class="judul">{{$popular->judul}}</div>
         <div class="preview">{{str_limit($popular->judul, 50)}}</div>
       </a>

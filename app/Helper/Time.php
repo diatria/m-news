@@ -67,4 +67,16 @@ class Time
 			return $date->format('d').' '.$month_name.' '.$date->format('Y');
 		}
 	}
+
+	public static function SysToIndonesia($value)
+	{
+		$date = new DateTime($value);
+		return $date->format('Y-m-d H:i:s');
+	}
+
+	public static function IndonesiaToSys($value)
+	{
+		$date = new DateTime($value);
+		return $date->format('d-m-Y H:i:s');
+	}
 }

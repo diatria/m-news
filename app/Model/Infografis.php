@@ -4,6 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Helper\Time;
+
 class Infografis extends Model
 {
     protected $table = 'infografis';
@@ -26,7 +28,7 @@ class Infografis extends Model
         $table->source_type = $req->input('s_type');
     	$table->url = str_slug($req->input('judul'));
     	$table->display = 'Yes';
-        $table->time = date('Y-m-d H:i:s');
+        $table->time = Time::SysToIndonesia($req->input('tgl_upload'));
     	$table->save();
 
     	return $table;
@@ -45,6 +47,7 @@ class Infografis extends Model
         $table->id_kategori = $req->input('kategori');
     	$table->source_type = $req->input('s_type');
         $table->url = str_slug($req->input('judul'));
+        $table->time = Time::SysToIndonesia($req->input('tgl_upload'));
     	if ($source) {
     		$table->source = $source;
     	}

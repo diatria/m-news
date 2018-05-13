@@ -14,9 +14,13 @@ class IklanController extends Controller
 {
     public function viewer()
     {
-    	$iklan = Iklan::render();
-    	return view('dashboard.iklan.iklan_create')
-    	->with('data', $iklan);
+        try {
+        	$iklan = Iklan::render();
+        	return view('dashboard.iklan.iklan_create')
+        	->with('data', $iklan);
+        } catch (\Exception $e) {
+            return redirect()->action('FrontPage\ErrorController@E500');
+        }
     }
 
     public function change_viewer($id)
@@ -28,7 +32,7 @@ class IklanController extends Controller
 			->with('data', $iklan)
 			->with('change', $data_change);
 		} catch (\Exception $e) {
-			return $e;
+			return redirect()->action('FrontPage\ErrorController@E500');
 		}
 	}
 
@@ -41,7 +45,7 @@ class IklanController extends Controller
     		Iklan::insert($request, $file_name);
     		return ResponseRedirect::go('db_iklan', 'Berhasil menyimpan data iklan', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }
@@ -60,7 +64,7 @@ class IklanController extends Controller
     		Iklan::change($request, $id, $file_name);
     		return ResponseRedirect::go('db_iklan', 'Berhasil merubah data iklan', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     }
 
@@ -70,7 +74,7 @@ class IklanController extends Controller
     		Iklan::destroy($id);
     		return ResponseRedirect::go('db_iklan', 'Berhasil menghapus data kategori', 'danger');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }

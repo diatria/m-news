@@ -1,0 +1,82 @@
+<?php
+
+function list_items($data)
+{
+    echo '<ul>';
+    foreach ($data as $cat)
+    {
+        echo '<li>'.$cat['name'];
+
+        if (count($cat['children']) > 0)
+        {
+            list_items($cat['children']);
+        }
+
+        echo '</li>';
+    }
+
+    echo '</ul>';
+}
+
+$array = array(
+    array(
+        'id' => 1,
+        'name' => 'Category 1',
+        'parent' => 0,
+        'children' => array(
+            array(
+                'id' => 3,
+                'name' => 'Category 3',
+                'parent' => 1,
+                'children' => array()
+            ),
+            array(
+                'id' => 4,
+                'name' => 'Category 4',
+                'parent' => 1,
+                'children' => array(                    
+                    array(
+                        'id' => 5,
+                        'name' => 'Category 5',
+                        'parent' => 4,
+                        'children' => array(
+							array(
+								'id' => 6,
+								'name' => 'Category 6',
+								'parent' => 4,
+								'children' => array()
+							)
+						)
+                    ),
+                    array(
+                        'id' => 6,
+                        'name' => 'Category 6',
+                        'parent' => 4,
+                        'children' => array()
+                    ),
+					array(
+                        'id' => 6,
+                        'name' => 'Category 6',
+                        'parent' => 4,
+                        'children' => array()
+                    )
+                )
+            )
+        )
+    ),
+    array(
+        'id' => 2,
+        'name' => 'Category 2',
+        'parent' => 0,
+        'children' => array(
+            array(
+                'id' => 7,
+                'name' => 'Category 7',
+                'parent' => 2,
+                'children' => array()
+            )
+        )
+    )
+);
+
+list_items($array);

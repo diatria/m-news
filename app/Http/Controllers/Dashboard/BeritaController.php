@@ -16,11 +16,15 @@ class BeritaController extends Controller
 {
     public function viewer()
     {
-    	$kategori = Kategori::render()->where('display', 'Yes');
-    	$berita = Berita::where('display', 'Yes')->get();
-    	return view('dashboard.berita.berita_create')
-    	->with('data', $berita)
-    	->with('kategori', $kategori);
+        try {
+        	$kategori = Kategori::render()->where('display', 'Yes');
+        	$berita = Berita::where('display', 'Yes')->get();
+        	return view('dashboard.berita.berita_create')
+        	->with('data', $berita)
+        	->with('kategori', $kategori);
+        } catch (\Exception $e) {
+            return redirect()->action('FrontPage\ErrorController@E500');
+        }
     }
 
     public function change_viewer($id)
@@ -34,13 +38,13 @@ class BeritaController extends Controller
 			->with('change', $data_change)
 			->with('kategori', $kategori);
 		} catch (\Exception $e) {
-			return $e;
+			return redirect()->action('FrontPage\ErrorController@E500');
 		}
 	}
 
     public function add(Request $request)
     {
-    	try {
+    	// try {
     		$file = $request->file('source');
             $file_link = $request->input('source_link');
             $file_embed = $request->input('source_embed');
@@ -55,9 +59,9 @@ class BeritaController extends Controller
 
     		Berita::insert($request, $file_name);
     		return ResponseRedirect::go('db_berita', 'Berhasil menyimpan data berita', 'success');
-    	} catch (\Exception $e) {
-    		return $e;
-    	}
+    	// } catch (\Exception $e) {
+    	// 	return redirect()->action('FrontPage\ErrorController@E500');
+    	// }
     	
     }
 
@@ -81,7 +85,7 @@ class BeritaController extends Controller
     		Berita::change($request, $id, $file_name);
     		return ResponseRedirect::go('db_berita', 'Berhasil merubah data berita', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     }
 
@@ -91,7 +95,7 @@ class BeritaController extends Controller
     		Berita::destroy($id);
     		return ResponseRedirect::go('db_berita', 'Berhasil menghapus data berita', 'danger');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }

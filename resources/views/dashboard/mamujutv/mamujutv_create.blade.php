@@ -48,11 +48,26 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<div class="row">
+									<div class="col-md-12">
+										<textarea name="source_embed" class="input-flat" id="" style="width: 100%;" rows="5" placeholder="Embed Code"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
 								<label for="exampleInputEmail1">Tipe Upload</label>
 								<select name="s_type" class="form-control input-flat" required="">
 									<option value="gambar">Gambar</option>
 									<option value="video">video</option>
+									<option value="embed">embed code</option>
 								</select>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Tanggal Upload</label>
+								<input type="text" name="tgl_upload" class="form-control" value="{{date('d-m-Y H:i:s')}}">
+							    <div class="input-group-addon">
+							        <span class="glyphicon glyphicon-th"></span>
+							    </div>
 							</div>
 						</div>
 					</div>

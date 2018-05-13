@@ -17,11 +17,15 @@ class MamujutvController extends Controller
 {
     public function viewer()
     {
-    	$kategori = Kategori::render()->where('display', 'Yes');
-    	$mamujutv = Mamujutv::where('display', 'Yes')->get();
-    	return view('dashboard.mamujutv.mamujutv_create')
-    	->with('data', $mamujutv)
-    	->with('kategori', $kategori);
+        try {
+        	$kategori = Kategori::render()->where('display', 'Yes');
+        	$mamujutv = Mamujutv::where('display', 'Yes')->get();
+        	return view('dashboard.mamujutv.mamujutv_create')
+        	->with('data', $mamujutv)
+        	->with('kategori', $kategori);
+        } catch (\Exception $e) {
+            return redirect()->action('FrontPage\ErrorController@E500');
+        }
     }
 
     public function change_viewer($id)
@@ -35,7 +39,7 @@ class MamujutvController extends Controller
 			->with('change', $data_change)
 			->with('kategori', $kategori);
 		} catch (\Exception $e) {
-			return $e;
+			return redirect()->action('FrontPage\ErrorController@E500');
 		}
 	}
 
@@ -57,7 +61,7 @@ class MamujutvController extends Controller
     		Mamujutv::insert($request, $file_name);
     		return ResponseRedirect::go('db_mamujutv', 'Berhasil menyimpan data mamujutv', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }
@@ -82,7 +86,7 @@ class MamujutvController extends Controller
     		Mamujutv::change($request, $id, $file_name);
     		return ResponseRedirect::go('db_mamujutv', 'Berhasil merubah data mamujutv', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     }
 
@@ -92,7 +96,7 @@ class MamujutvController extends Controller
     		Mamujutv::destroy($id);
     		return ResponseRedirect::go('db_mamujutv', 'Berhasil menghapus data mamujutv', 'danger');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }

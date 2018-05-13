@@ -17,11 +17,15 @@ class InfografisController extends Controller
 {
     public function viewer()
     {
-    	$kategori = Kategori::render()->where('display', 'Yes');
-    	$infografis = Infografis::where('display', 'Yes')->get();
-    	return view('dashboard.infografis.infografis_create')
-    	->with('data', $infografis)
-    	->with('kategori', $kategori);
+        try {
+        	$kategori = Kategori::render()->where('display', 'Yes');
+        	$infografis = Infografis::where('display', 'Yes')->get();
+        	return view('dashboard.infografis.infografis_create')
+        	->with('data', $infografis)
+        	->with('kategori', $kategori);
+        } catch (\Exception $e) {
+            return redirect()->action('FrontPage\ErrorController@E500');
+        }
     }
 
     public function change_viewer($id)
@@ -35,7 +39,7 @@ class InfografisController extends Controller
 			->with('change', $data_change)
 			->with('kategori', $kategori);
 		} catch (\Exception $e) {
-			return $e;
+			return redirect()->action('FrontPage\ErrorController@E500');
 		}
 	}
 
@@ -57,7 +61,7 @@ class InfografisController extends Controller
     		Infografis::insert($request, $file_name);
     		return ResponseRedirect::go('db_infografis', 'Berhasil menyimpan data infografis', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }
@@ -82,7 +86,7 @@ class InfografisController extends Controller
     		Infografis::change($request, $id, $file_name);
     		return ResponseRedirect::go('db_infografis', 'Berhasil merubah data infografis', 'success');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     }
 
@@ -92,7 +96,7 @@ class InfografisController extends Controller
     		Infografis::destroy($id);
     		return ResponseRedirect::go('db_infografis', 'Berhasil menghapus data infografis', 'danger');
     	} catch (\Exception $e) {
-    		return $e;
+    		return redirect()->action('FrontPage\ErrorController@E500');
     	}
     	
     }
